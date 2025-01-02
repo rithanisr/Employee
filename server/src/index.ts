@@ -1,0 +1,36 @@
+const express=require('express')
+import { ApolloServer } from 'apollo-server-express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import { authMiddleware } from './middleware/auth';
+import { createContext } from './middleware/graphqlContext.ts';
+import allResolvers from './resolver/index.resolver';
+import allTypeDefs from './schema/index.schema';
+import connectDB from './database';
+
+dotenv.config();
+const Port = process.env.PORT || 4000;
+
+const startServer = async () => {
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
+  app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true, 
+  }));
+// app.use(authMiddleware);
+const apolloServer = new ApolloServer({
+    typeDefs:allTypeDefs,
+    resolvers:allResolvers,
+    context: createContext,
+  });
+
+  await connectDB();
+  await apolloServer.start();
+  apolloServer.applyMiddleware({ app, cors: false });
+
+  app.listen(Port, () => console.log(`Server is running on port ${Port}`));
+};
+
+startServer().catch(error => console.error('Failed to start server:', error));
