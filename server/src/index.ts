@@ -1,9 +1,9 @@
-const express=require('express')
+import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { authMiddleware } from './middleware/auth';
-import { createContext } from './middleware/graphqlContext.ts';
+import { createContext } from './middleware/graphqlContext';
 import allResolvers from './resolver/index.resolver';
 import allTypeDefs from './schema/index.schema';
 import connectDB from './database';
