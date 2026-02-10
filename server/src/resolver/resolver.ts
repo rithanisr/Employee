@@ -1,5 +1,5 @@
 import User from '../models/User';
-import bcrypt from 'bcrypt';
+import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken';
 import { ApolloError } from 'apollo-server-express';
 
