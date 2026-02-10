@@ -16,7 +16,7 @@ const startServer = async () => {
   app.use(cors());
   app.use(express.json());
   app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://employee-1-0ds0.onrender.com',
     credentials: true, 
   }));
 // app.use(authMiddleware);
