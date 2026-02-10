@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
-  "scripts": {
-    "start": "nodemon --exec ts-node src/index.ts",
-    "build": "tsc",
-    "test": "jest"
-  },
+ "scripts": {
+  "dev": "nodemon --exec ts-node src/index.ts",
+  "build": "tsc",
+  "start": "node dist/index.js"
+},
   "dependencies": {
     "apollo-server": "^3.13.0",
     "apollo-server-express": "^3.13.0",
