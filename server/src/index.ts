@@ -24,6 +24,7 @@ const apolloServer = new ApolloServer({
     typeDefs:allTypeDefs,
     resolvers:allResolvers,
     context: createContext,
+     introspection: true,
   });
 
   await connectDB();
